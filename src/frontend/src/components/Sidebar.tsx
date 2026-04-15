@@ -115,21 +115,6 @@ export function Sidebar({ onClose }: SidebarProps) {
           );
         })}
       </nav>
-
-      {/* Footer */}
-      <div className="px-5 py-4 border-t border-border flex-shrink-0">
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()}.{" "}
-          <a
-            href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-          >
-            Built with caffeine.ai
-          </a>
-        </p>
-      </div>
     </aside>
   );
 }

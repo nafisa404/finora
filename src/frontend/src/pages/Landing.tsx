@@ -590,15 +590,7 @@ export default function Landing() {
             Finora
           </span>
           <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()}.{" "}
-            <a
-              href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              Built with love using caffeine.ai
-            </a>
+            © {new Date().getFullYear()} Finora. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
             <a
