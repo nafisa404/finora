@@ -1,0 +1,25 @@
+{
+  "overview": "Finora is a modern AI-powered personal finance assistant with expense tracking, smart anomaly detection, spending charts, and a mock AI chat — all in a clean, premium fintech UI.",
+  "features": [
+    "Landing page with hero section and CTA",
+    "Dashboard with total balance, monthly spending, and savings progress cards",
+    "Expense tracking form with category, note, and date",
+    "Recent transactions list with anomaly badges",
+    "Rule-based anomaly detection (2x average, 30% category increase, daily limit)",
+    "Alert cards with red/yellow severity indicators and notification badge",
+    "Weekly spending line chart and category breakdown chart",
+    "Auto-generated financial insights section",
+    "Mock AI chat assistant with finance-related responses",
+    "Fully responsive layout with smooth animations"
+  ],
+  "category": "productivity",
+  "tags": [
+    "finance",
+    "dashboard",
+    "ai-assistant",
+    "expense-tracking",
+    "analytics",
+    "fintech"
+  ],
+  "last_updated": "2026-04-15T06:05:48.344Z"
+}

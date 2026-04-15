@@ -1,0 +1,65 @@
+type Timestamp = int;
+type ExpenseId = nat;
+type ExpenseAnomaly = 
+ record {
+   amount: float64;
+   category: text;
+   date: int;
+   expenseId: nat;
+   isHighAmount: bool;
+ };
+type Expense = 
+ record {
+   amount: float64;
+   category: text;
+   date: Timestamp;
+   id: ExpenseId;
+   note: text;
+ };
+type DashboardStats = 
+ record {
+   monthlySpending: float64;
+   savingsProgressPercent: float64;
+   totalBalance: float64;
+ };
+type DailySpending = 
+ record {
+   date: int;
+   dayLabel: text;
+   total: float64;
+ };
+type CategoryComparison = 
+ record {
+   category: text;
+   currentMonthTotal: float64;
+   percentChange: float64;
+   priorMonthTotal: float64;
+ };
+type CategoryBreakdown = 
+ record {
+   category: text;
+   total: float64;
+ };
+type AnomalyReport = 
+ record {
+   averageExpense: float64;
+   categoryComparisons: vec CategoryComparison;
+   dailySpending: vec DailySpending;
+   expenseAnomalies: vec ExpenseAnomaly;
+ };
+type AddExpenseRequest = 
+ record {
+   amount: float64;
+   category: text;
+   date: Timestamp;
+   note: text;
+ };
+service : {
+  addExpense: (req: AddExpenseRequest) -> (nat);
+  deleteExpense: (id: ExpenseId) -> (bool);
+  getAnomalyReport: () -> (AnomalyReport) query;
+  getCategoryBreakdown: () -> (vec CategoryBreakdown) query;
+  getDailySpending: () -> (vec DailySpending) query;
+  getDashboardStats: () -> (DashboardStats) query;
+  listExpenses: () -> (vec Expense) query;
+}
