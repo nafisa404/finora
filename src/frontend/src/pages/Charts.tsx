@@ -5,6 +5,7 @@ import {
   useCategoryBreakdown,
   useDailySpending,
 } from "@/hooks/useDashboardStats";
+import { formatCurrency } from "@/lib/currency";
 import { BarChart2, PieChart as PieIcon, TrendingUp } from "lucide-react";
 import { type ReactElement, useCallback, useState } from "react";
 import {
@@ -44,15 +45,6 @@ const CHART_COLORS_LIGHT = [
 
 function buildBarGradient(from: string, to: string): string {
   return `linear-gradient(90deg, ${from}, ${to})`;
-}
-
-// ── Formatters ───────────────────────────────────────────────────────────────
-function formatCurrency(n: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(n);
 }
 
 // ── Custom Tooltip — Line Chart ──────────────────────────────────────────────
@@ -308,7 +300,7 @@ export default function Charts() {
                   tick={{ fontSize: 11, fill: "oklch(0.48 0.01 0)" }}
                   axisLine={false}
                   tickLine={false}
-                  tickFormatter={(v: number) => `$${v}`}
+                  tickFormatter={(v: number) => `₹${v}`}
                   width={50}
                 />
                 <Tooltip content={<LineTooltip />} />

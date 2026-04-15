@@ -18,13 +18,13 @@ import {
   useExpenses,
 } from "@/hooks/useExpenses";
 import { generateAlertsFromReport } from "@/lib/anomalyDetection";
+import { formatCurrency } from "@/lib/currency";
 import { useFinanceStore } from "@/store/useFinanceStore";
 import { EXPENSE_CATEGORIES } from "@/types";
 import { format } from "date-fns";
 import {
   AlertTriangle,
   Bus,
-  DollarSign,
   Film,
   HeartPulse,
   Home,
@@ -117,11 +117,6 @@ function CategoryIcon({
 }
 
 // ─── Main page ────────────────────────────────────────────────────────────────
-
-const formatCurrency = (n: number) =>
-  new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
-    n,
-  );
 
 export default function Expenses() {
   const { data: expenses = [], isLoading } = useExpenses();
@@ -217,8 +212,8 @@ export default function Expenses() {
             <div className="space-y-1.5">
               <Label htmlFor="amount">Amount</Label>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none">
-                  <DollarSign className="h-4 w-4" />
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none text-sm font-medium">
+                  ₹
                 </span>
                 <Input
                   id="amount"

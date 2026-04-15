@@ -8,7 +8,9 @@ import {
   Bot,
   LayoutDashboard,
   Lightbulb,
+  PiggyBank,
   Receipt,
+  Target,
   X,
 } from "lucide-react";
 
@@ -22,6 +24,8 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: "Dashboard", to: "/dashboard", icon: LayoutDashboard, exact: true },
   { label: "Expenses", to: "/dashboard/expenses", icon: Receipt },
+  { label: "Budget", to: "/dashboard/budget", icon: PiggyBank },
+  { label: "Goals", to: "/dashboard/goals", icon: Target },
   { label: "Charts", to: "/dashboard/charts", icon: BarChart2 },
   { label: "Insights", to: "/dashboard/insights", icon: Lightbulb },
   { label: "AI Assistant", to: "/dashboard/ai", icon: Bot },

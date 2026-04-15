@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useAnomalyReport } from "@/hooks/useAnomalyReport";
 import { useDashboardStats } from "@/hooks/useDashboardStats";
 import { useExpenses } from "@/hooks/useExpenses";
+import { formatCurrency } from "@/lib/currency";
 import { useFinanceStore } from "@/store/useFinanceStore";
 import { Link } from "@tanstack/react-router";
 import { format } from "date-fns";
@@ -60,13 +61,6 @@ const CATEGORY_COLORS: Record<string, string> = {
   Travel: "bg-teal-100 text-teal-600 dark:bg-teal-900/30 dark:text-teal-400",
   Other: "bg-secondary text-muted-foreground",
 };
-
-function formatCurrency(n: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(n);
-}
 
 // ─── Stat Card ────────────────────────────────────────────────────────────────
 function StatCard({
@@ -202,7 +196,7 @@ function AlertCard({
 
 // ─── Savings Progress Card ────────────────────────────────────────────────────
 function SavingsProgressCard({ percent }: { percent: number }) {
-  const savingsGoal = 50000;
+  const savingsGoal = 500000;
   const saved = savingsGoal * (percent / 100);
 
   return (
@@ -233,7 +227,7 @@ function SavingsProgressCard({ percent }: { percent: number }) {
       <div className="space-y-1.5">
         <Progress value={percent} className="h-2.5" />
         <div className="flex justify-between text-[10px] text-muted-foreground">
-          <span>$0</span>
+          <span>₹0</span>
           <span className="text-emerald-600 dark:text-emerald-400 font-medium">
             {formatCurrency(saved)} reached
           </span>
@@ -251,7 +245,7 @@ function SpendingMiniBar({
   maxAmount,
 }: { day: string; amount: number; maxAmount: number }) {
   const heightPct = maxAmount > 0 ? (amount / maxAmount) * 100 : 0;
-  const isHigh = amount > 150;
+  const isHigh = amount > 10000;
 
   return (
     <div className="flex flex-col items-center gap-1.5 flex-1">
@@ -328,7 +322,7 @@ export default function Dashboard() {
             <StatCard
               title="Monthly Spending"
               value={formatCurrency(stats?.monthlySpending ?? 0)}
-              sub="+18.7% vs. $1,980 prior"
+              sub="+18.7% vs. ₹1,64,540 prior"
               icon={TrendingDown}
               index={2}
               trend="down"

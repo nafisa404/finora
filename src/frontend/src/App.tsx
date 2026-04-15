@@ -15,6 +15,8 @@ const ExpensesPage = lazy(() => import("@/pages/Expenses"));
 const ChartsPage = lazy(() => import("@/pages/Charts"));
 const InsightsPage = lazy(() => import("@/pages/Insights"));
 const AIAssistantPage = lazy(() => import("@/pages/AIAssistant"));
+const BudgetPage = lazy(() => import("@/pages/Budget"));
+const GoalsPage = lazy(() => import("@/pages/Goals"));
 
 function PageFallback() {
   return (
@@ -101,6 +103,26 @@ const aiRoute = createRoute({
   ),
 });
 
+const budgetRoute = createRoute({
+  getParentRoute: () => dashboardLayoutRoute,
+  path: "/budget",
+  component: () => (
+    <Suspense fallback={<PageFallback />}>
+      <BudgetPage />
+    </Suspense>
+  ),
+});
+
+const goalsRoute = createRoute({
+  getParentRoute: () => dashboardLayoutRoute,
+  path: "/goals",
+  component: () => (
+    <Suspense fallback={<PageFallback />}>
+      <GoalsPage />
+    </Suspense>
+  ),
+});
+
 const routeTree = rootRoute.addChildren([
   landingRoute,
   dashboardLayoutRoute.addChildren([
@@ -109,6 +131,8 @@ const routeTree = rootRoute.addChildren([
     chartsRoute,
     insightsRoute,
     aiRoute,
+    budgetRoute,
+    goalsRoute,
   ]),
 ]);
 

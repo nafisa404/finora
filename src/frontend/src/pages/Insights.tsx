@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAnomalyReport } from "@/hooks/useAnomalyReport";
+import { formatCurrency } from "@/lib/currency";
 import { useFinanceStore } from "@/store/useFinanceStore";
 import type { Alert, CategoryComparison } from "@/types";
 import { format } from "date-fns";
@@ -23,11 +24,6 @@ import { motion } from "motion/react";
 import { useMemo } from "react";
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
-
-const fmt = (n: number) =>
-  new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
-    n,
-  );
 
 const slideUp = (delay: number) => ({
   initial: { opacity: 0, y: 18 },
@@ -144,13 +140,13 @@ function CategoryRow({
       <div className="text-right hidden sm:block">
         <p className="text-xs text-muted-foreground">Prior</p>
         <p className="text-sm font-mono text-muted-foreground">
-          {fmt(comp.priorMonthTotal)}
+          {formatCurrency(comp.priorMonthTotal)}
         </p>
       </div>
       <div className="text-right">
         <p className="text-xs text-muted-foreground">Current</p>
         <p className="text-sm font-mono font-medium text-foreground">
-          {fmt(comp.currentMonthTotal)}
+          {formatCurrency(comp.currentMonthTotal)}
         </p>
       </div>
       <div className="flex items-center gap-1">
@@ -322,7 +318,7 @@ export default function Insights() {
       insights.push({
         id: "top-category",
         icon: Info,
-        message: `Your top spending category this month is ${topCategory.category} at ${fmt(topCategory.currentMonthTotal)}.`,
+        message: `Your top spending category this month is ${topCategory.category} at ${formatCurrency(topCategory.currentMonthTotal)}.`,
         type: "info",
       });
     }
@@ -416,7 +412,7 @@ export default function Insights() {
             />
             <SummaryStat
               label="Highest Single Expense"
-              value={fmt(summaryStats.highestExpense)}
+              value={formatCurrency(summaryStats.highestExpense)}
               sub="largest flagged amount"
               accent="amber"
             />
@@ -567,7 +563,7 @@ export default function Insights() {
                 </h2>
                 <p className="text-xs text-muted-foreground">
                   Expenses exceeding 2× your average of{" "}
-                  {fmt(report.averageExpense)}
+                  {formatCurrency(report.averageExpense)}
                 </p>
               </div>
               <Badge className="bg-red-100 text-red-700 border-0 font-bold">
@@ -601,7 +597,7 @@ export default function Insights() {
                   </div>
                   <div className="text-right shrink-0">
                     <p className="text-sm font-semibold font-mono text-red-700">
-                      {fmt(anomaly.amount)}
+                      {formatCurrency(anomaly.amount)}
                     </p>
                     <p className="text-[11px] text-red-500">
                       {(anomaly.amount / report.averageExpense).toFixed(1)}× avg

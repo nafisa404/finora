@@ -68,6 +68,23 @@ export interface ChatMessage {
   timestamp: number;
 }
 
+export interface Goal {
+  id: string;
+  name: string;
+  targetAmount: number;
+  currentAmount: number;
+  deadline: string; // ISO date string YYYY-MM-DD
+  category: string;
+  createdAt: string; // ISO date string
+}
+
+export interface Budget {
+  id: string;
+  category: string;
+  monthlyLimit: number;
+  spent: number; // computed from current month expenses
+}
+
 export type ExpenseCategory =
   | "Food & Dining"
   | "Transportation"

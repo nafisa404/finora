@@ -42,7 +42,7 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { label: "Avg. monthly savings", value: "$1,240", icon: Wallet },
+  { label: "Avg. monthly savings", value: "₹1,03,000", icon: Wallet },
   { label: "Expense categories tracked", value: "12+", icon: LineChart },
   { label: "Alerts generated/month", value: "3–8", icon: Bell },
   { label: "Insights per week", value: "5+", icon: Sparkles },
@@ -157,7 +157,7 @@ export default function Landing() {
             }}
             className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed"
           >
-            Track every dollar, detect unusual spending automatically, and get
+            Track every rupee, detect unusual spending automatically, and get
             AI-powered guidance — in one beautifully simple dashboard.
           </motion.p>
 
@@ -422,7 +422,7 @@ export default function Landing() {
                 {
                   level: "critical" as const,
                   title: "Unusual high expense detected",
-                  desc: "Dining expense of $185 is 2.4× your average ($77)",
+                  desc: "Dining expense of ₹15,350 is 2.4× your average (₹6,400)",
                   time: "Just now",
                 },
                 {
@@ -434,7 +434,7 @@ export default function Landing() {
                 {
                   level: "info" as const,
                   title: "Daily spending limit reached",
-                  desc: "You've exceeded your $200/day limit. Total today: $247",
+                  desc: "You've exceeded your ₹16,600/day limit. Total today: ₹20,500",
                   time: "5h ago",
                 },
               ].map((alert, i) => (
